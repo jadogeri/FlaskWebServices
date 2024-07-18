@@ -9,58 +9,147 @@ print("absolute path === ",dir)
 sys.path.append(dir)
 from app import *  
 
-@app.route('/getAreaRectangle')
-def getAreaRectangle( width : float, length : float):
+@app.route('/Geometry/getAreaRectangle')
+def getAreaRectangle( width : float = None, length : float = None):
     try:
         area : float;
         width_string = request.args.get('width');
         length_string = request.args.get('length');
-        if ( width_string is None and length_string is None):
-            area = width * length;
-            return area;
+        if (width is not None and length is not None):
+            area = width * length;  
+            return str(area);       
+        elif ( width_string is None and length_string is None):
+            area = width * length;   
+            return str(area)        
         elif ( width_string is not None and length_string is not None ):
             width = float(width_string);
             length = float(length_string);
-            return area;
+            area = width * length; 
+            return str(area)
         else : 
             return None;
-    except ValueError as error:
-        print(error)
+    except Exception as e:
+        print(e)
+        return "Invalid data in query string", 400
 
 
-@app.route('/getAreaCircle')
+@app.route('/Geometry/getAreaCircle')
 def getAreaCircle( radius : float):
     area : float;
-    area = 0.5 * round(Math.pi,2) * radius**2;
-    return area;
+    try:
+        radius_string = request.args.get('radius');
+        if (radius is not None):
+                area = 0.5 * round(Math.pi,2) * radius**2;  
+                return str(area);       
+        elif ( radius_string is None):
+            area = 0.5 * round(Math.pi,2) * radius**2;   
+            return str(area)        
+        elif ( radius_string is not None ):
+            radius = float(radius_string);
+            area = 0.5 * round(Math.pi,2) * radius**2;  
+            return str(area)
+        else : 
+            return None;
+    except Exception as e:
+        print(e)
+        return "Invalid data in query string", 400
 
-@app.route('/getAreaTriangle')
+@app.route('/Geometry/getAreaTriangle')
 def getAreaTriangle( base : float, height : float):
     area : float;
-    area = 0.5 * base * height;
-    return area;
+    try:
+        base_string = request.args.get('base');
+        height_string = request.args.get('height');
+        if ( base is not None and height is not None):
+            area = 0.5 * base * height;  
+            return str(area);       
+        elif (  base_string is None and height_string is None):
+            area = 0.5 * base * height;    
+            return str(area)        
+        elif ( base_string is not None and height_string is not None ):
+            base = float(base_string);
+            height = float(height_string);
+            area = 0.5 * base * height; 
+            return str(area)
+        else : 
+            return None;
+    except Exception as e:
+        print(e)
+        return "Invalid data in query string", 400
 
-@app.route('/getPerimeterRectangle')
+@app.route('/Geometry/getPerimeterRectangle')
 def getPerimeterRectangle( width : float, length : float):
     perimeter : float;
-    perimeter = 2 * ( width + length );
-    return perimeter;
+    try:    
+        width_string = request.args.get('width');
+        length_string = request.args.get('length');
+        if (width is not None and length is not None):
+            perimeter = 2 * ( width + length ); 
+            return str(perimeter);       
+        elif ( width_string is None and length_string is None):
+            perimeter = 2 * ( width + length ); 
+            return str(perimeter)        
+        elif ( width_string is not None and length_string is not None ):
+            width = float(width_string);
+            length = float(length_string);
+            perimeter = 2 * ( width + length ); 
+            return str(perimeter)
+        else : 
+            return None;
+    except Exception as e:
+        print(e)
+        return "Invalid data in query string", 400
 
-@app.route('/getPerimeterCircle')
+
+@app.route('/Geometry/getPerimeterCircle')
 def getPerimeterCircle( radius : float):
     perimeter : float;
-    perimeter = 2 * round(Math.pi,2) * radius;
-    return perimeter;
+    try:
+        radius_string = request.args.get('radius');
+        if (radius is not None):
+            perimeter = 2 * round(Math.pi,2) * radius; 
+            return str(perimeter);       
+        elif ( radius_string is None):
+            perimeter = 2 * round(Math.pi,2) * radius;   
+            return str(perimeter)        
+        elif ( radius_string is not None ):
+            radius = float(radius_string);
+            perimeter = 2 * round(Math.pi,2) * radius;  
+            return str(perimeter)
+        else : 
+            return None;
+    except Exception as e:
+        print(e)
+        return "Invalid data in query string", 400
+    
 
-@app.route('/getPerimeterTriangle')
+@app.route('/Geometry/getPerimeterTriangle')
 def getPerimeterTriangle( side1 : float, side2 : float, side3 : float):
     perimeter : float;
-    perimeter = side1 + side2 + side3;
-    return perimeter;
+    try:        
+        side1_string = request.args.get('side1');
+        side2_string = request.args.get('side2');
+        side3_string = request.args.get('side3');
 
-@app.route('/test')
-def getTest( ):    
-    print(request.args.get('framework'))
+        length_string = request.args.get('length');
+        if (side1 is not None and side2 is not None and side3 is not None):
+            perimeter = side1 + side2 + side3;  
+            return str(perimeter);       
+        elif (side1_string is None and side2_string is None and side3_string is None):
+            perimeter = side1 + side2 + side3;  
+            return str(perimeter);        
+        elif (side1_string is not None and side2_string is not None and side3_string is not None):
+            side1 = float(side1_string);
+            side2 = float(side2_string);
+            side3 = float(side3_string);
 
-    
-    return "hello test king jay aa";
+            perimeter = side1 + side2 + side3;  
+            return str(perimeter);  
+        else : 
+            return None;
+    except Exception as e:
+        print(e)
+        return "Invalid data in query string", 400
+
+
+  
