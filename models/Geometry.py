@@ -1,13 +1,13 @@
 import math as Math
 import sys 
 from os.path import dirname, abspath
+
+from flask import request
 dir = dirname(dirname(abspath(__file__)))
 print("absolute path === ",dir)
 
 sys.path.append(dir)
 from app import *  
-
-
 
 @app.route('/getAreaRectangle')
 def getAreaRectangle( width : float, length : float):
@@ -47,5 +47,8 @@ def getPerimeterTriangle( side1 : float, side2 : float, side3 : float):
 
 @app.route('/test')
 def getTest( ):
+    
+    print(request.args.get('framewor'))
+
     
     return "hello test king jay";
