@@ -11,9 +11,22 @@ from app import *
 
 @app.route('/getAreaRectangle')
 def getAreaRectangle( width : float, length : float):
-    area : float;
-    area = width * length;
-    return area;
+    try:
+        area : float;
+        width_string = request.args.get('width');
+        length_string = request.args.get('length');
+        if ( width_string is None and length_string is None):
+            area = width * length;
+            return area;
+        elif ( width_string is not None and length_string is not None ):
+            width = float(width_string);
+            length = float(length_string);
+            return area;
+        else : 
+            return None;
+    except ValueError as error:
+        print(error)
+
 
 @app.route('/getAreaCircle')
 def getAreaCircle( radius : float):
@@ -46,9 +59,8 @@ def getPerimeterTriangle( side1 : float, side2 : float, side3 : float):
     return perimeter;
 
 @app.route('/test')
-def getTest( ):
-    
-    print(request.args.get('framewor'))
+def getTest( ):    
+    print(request.args.get('framework'))
 
     
-    return "hello test king jay";
+    return "hello test king jay aa";
