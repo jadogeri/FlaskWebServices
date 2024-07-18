@@ -35,12 +35,12 @@ def getAreaRectangle( width : float = None, length : float = None):
 
 @app.route('/Geometry/getAreaCircle')
 def getAreaCircle( radius : float):
-    area : float;
     try:
+        area : float;
         radius_string = request.args.get('radius');
         if (radius is not None):
-                area = 0.5 * round(Math.pi,2) * radius**2;  
-                return str(area);       
+            area = 0.5 * round(Math.pi,2) * radius**2;  
+            return str(area);       
         elif ( radius_string is None):
             area = 0.5 * round(Math.pi,2) * radius**2;   
             return str(area)        
