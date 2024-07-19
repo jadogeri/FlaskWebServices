@@ -9,7 +9,7 @@ print("absolute path === ",dir)
 sys.path.append(dir)
 from app import *  
 
-@app.route('/Geometry/getAreaRectangle')
+@app.route('/geometry/getAreaRectangle')
 def getAreaRectangle( width : float = None, length : float = None):
     try:
         area : float;
@@ -33,20 +33,21 @@ def getAreaRectangle( width : float = None, length : float = None):
         return "Invalid data in query string", 400
 
 
-@app.route('/Geometry/getAreaCircle')
-def getAreaCircle( radius : float):
+@app.route('/geometry/getAreaCircle')
+def getAreaCircle( radius : float = None):
     try:
+        print(request.args.get('radius'))
         area : float;
         radius_string = request.args.get('radius');
         if (radius is not None):
-            area = 0.5 * round(Math.pi,2) * radius**2;  
+            area = round(Math.pi,2) * radius**2;  
             return str(area);       
         elif ( radius_string is None):
             area = 0.5 * round(Math.pi,2) * radius**2;   
             return str(area)        
         elif ( radius_string is not None ):
             radius = float(radius_string);
-            area = 0.5 * round(Math.pi,2) * radius**2;  
+            area = round(Math.pi,2) * radius**2;  
             return str(area)
         else : 
             return None;
@@ -54,8 +55,8 @@ def getAreaCircle( radius : float):
         print(e)
         return "Invalid data in query string", 400
 
-@app.route('/Geometry/getAreaTriangle')
-def getAreaTriangle( base : float, height : float):
+@app.route('/geometry/getAreaTriangle')
+def getAreaTriangle( base : float = None, height : float = None):
     area : float;
     try:
         base_string = request.args.get('base');
@@ -77,8 +78,8 @@ def getAreaTriangle( base : float, height : float):
         print(e)
         return "Invalid data in query string", 400
 
-@app.route('/Geometry/getPerimeterRectangle')
-def getPerimeterRectangle( width : float, length : float):
+@app.route('/geometry/getPerimeterRectangle')
+def getPerimeterRectangle( width : float = None, length : float = None):
     perimeter : float;
     try:    
         width_string = request.args.get('width');
@@ -101,8 +102,8 @@ def getPerimeterRectangle( width : float, length : float):
         return "Invalid data in query string", 400
 
 
-@app.route('/Geometry/getPerimeterCircle')
-def getPerimeterCircle( radius : float):
+@app.route('/geometry/getPerimeterCircle')
+def getPerimeterCircle( radius : float = None):
     perimeter : float;
     try:
         radius_string = request.args.get('radius');
@@ -123,8 +124,8 @@ def getPerimeterCircle( radius : float):
         return "Invalid data in query string", 400
     
 
-@app.route('/Geometry/getPerimeterTriangle')
-def getPerimeterTriangle( side1 : float, side2 : float, side3 : float):
+@app.route('/geometry/getPerimeterTriangle')
+def getPerimeterTriangle( side1 : float = None, side2 : float = None, side3 : float = None):
     perimeter : float;
     try:        
         side1_string = request.args.get('side1');
@@ -152,4 +153,3 @@ def getPerimeterTriangle( side1 : float, side2 : float, side3 : float):
         return "Invalid data in query string", 400
 
 
-  
