@@ -1,3 +1,9 @@
+"""
+@author  Joseph Adogeri
+@since   01-AUG-2024
+@version 1.0   
+"""
+
 from app import *
 from models.Geometry import *
 
