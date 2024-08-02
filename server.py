@@ -6,6 +6,7 @@
 
 from app import *
 from models.Geometry import *
+from models.Time import *
 
 @app.route('/')
 def server():
