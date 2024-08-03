@@ -5,8 +5,8 @@
 """
 
 from app import *
-from models.Geometry import *
 from models.Time import *
+from models.Geometry import *
 
 @app.route('/')
 def server():
