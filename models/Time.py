@@ -11,14 +11,14 @@ from app import *
 
 #Returns number of minutes from seconds, 1 minute = 60 seconds
 @app.route('/time/secondsToMinutes')
-def secondsToMinutes(seconds: int = None):
+def secondsToMinutes(seconds : int = None):
     try:
         minutes : float;
         seconds_string = request.args.get('seconds');
         if (seconds is not None):
             minutes = round(seconds / 60,2);
             return str(minutes);       
-        elif ( radius_string is not None ):
+        elif ( seconds_string is not None ):
             seconds = float(seconds_string);
             minutes = round(seconds / 60,2);
             return str(minutes);
@@ -30,7 +30,7 @@ def secondsToMinutes(seconds: int = None):
 
 #Returns number of hours from seconds, 1 hour = 60 minutes
 @app.route('/time/secondsToHours')
-def secondsToHours(seconds: int = None): 
+def secondsToHours( seconds : int = None): 
     try:
         minutes : float;
         hours : float;
@@ -152,11 +152,22 @@ def hoursToSeconds(hours : float = None):
     try:
         minutes : float;
         seconds : float;
-        #convert hours to minutes i.e 60 minutes = i hour
-        minutes = hours * 60;    
-        #convert minutes to seconds  
-        seconds = minutes * 60
-        return str(seconds);
+        hours_string = request.args.get('hours');
+        if (hours is not None):
+            #convert hours to minutes i.e 60 minutes = i hour
+            minutes = hours * 60;    
+            #convert minutes to seconds  
+            seconds = minutes * 60
+            return str(seconds);
+        elif ( hours_string is not None ):
+            hours = float(hours_string);
+            #convert hours to minutes i.e 60 minutes = i hour
+            minutes = hours * 60;    
+            #convert minutes to seconds  
+            seconds = minutes * 60
+            return str(seconds);
+        else:
+            return None;
 
     except Exception as e:
         print(e)
@@ -170,13 +181,26 @@ def daysToSeconds(days : float = None):
         minutes : float;
         hours : float;
         seconds : float;
-        #convert days to hours
-        hours = days * 24;    
-        #convert hours to minutes   
-        minutes = hours * 60;
-        #convert minutes to seconds
-        seconds = minutes * 60;
-        return str(seconds);
+        days_string = request.args.get('days');
+        if (days is not None):
+            #convert days to hours
+            hours = days * 24;    
+            #convert hours to minutes   
+            minutes = hours * 60;
+            #convert minutes to seconds
+            seconds = minutes * 60;
+            return str(seconds);
+        elif ( days_string is not None ):
+            days = float(days_string);
+            #convert days to hours
+            hours = days * 24;    
+            #convert hours to minutes   
+            minutes = hours * 60;
+            #convert minutes to seconds
+            seconds = minutes * 60;
+            return str(seconds);
+        else:
+            return None;
 
     except Exception as e:
         print(e)
@@ -191,15 +215,28 @@ def yearsToSeconds(years : float = None):
         hours : float;
         days : float;
         seconds : float;
-        #convert years to days 
-        days = years * 365;    
-        #convert days to hours    
-        hours = days * 24;
-        #convert hours to minutes
-        minutes = hours * 60;
-        #convert minutes to seconds
-        seconds = minutes * 60;
-        return str(seconds);
+        years_string = request.args.get('years');
+        if (years is not None):
+            #convert years to days 
+            days = years * 365;    
+            #convert days to hours    
+            hours = days * 24;
+            #convert hours to minutes
+            minutes = hours * 60;
+            #convert minutes to seconds
+            seconds = minutes * 60;
+            return str(seconds);
+        elif ( years_string is not None ):
+            years = float(years_string);
+            #convert years to days 
+            days = years * 365;    
+            #convert days to hours    
+            hours = days * 24;
+            #convert hours to minutes
+            minutes = hours * 60;
+            #convert minutes to seconds
+            seconds = minutes * 60;
+            return str(seconds);
 
     except Exception as e:
         print(e)
