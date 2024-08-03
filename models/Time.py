@@ -14,9 +14,16 @@ from app import *
 def secondsToMinutes(seconds: int = None):
     try:
         minutes : float;
-        minutes = round(seconds / 60,2);
-        return str(minutes);
-
+        seconds_string = request.args.get('seconds');
+        if (seconds is not None):
+            minutes = round(seconds / 60,2);
+            return str(minutes);       
+        elif ( radius_string is not None ):
+            seconds = float(seconds_string);
+            minutes = round(seconds / 60,2);
+            return str(minutes);
+        else : 
+            return None;
     except Exception as e:
         print(e)
         return "Invalid data in query string", 400
@@ -27,12 +34,22 @@ def secondsToHours(seconds: int = None):
     try:
         minutes : float;
         hours : float;
-        #convert seconds to minutes i.e 1 minute = 60 seconds
-        minutes = seconds / 60;    
-        #convert minutes to hours    
-        hours = round(minutes / 60,2);
-        return str(hours);
-
+        seconds_string = request.args.get('seconds');
+        if (seconds is not None):
+            #convert seconds to minutes i.e 1 minute = 60 seconds
+            minutes = seconds / 60;    
+            #convert minutes to hours    
+            hours = round(minutes / 60,2);
+            return str(hours);   
+        elif ( seconds_string is not None ):
+            seconds = float(seconds_string);
+            #convert seconds to minutes i.e 1 minute = 60 seconds
+            minutes = seconds / 60;    
+            #convert minutes to hours    
+            hours = round(minutes / 60,2);
+            return str(hours);
+        else : 
+            return None;
     except Exception as e:
         print(e)
         return "Invalid data in query string", 400
@@ -45,14 +62,26 @@ def secondsToDays(seconds : int = None):
         minutes : float;
         hours : float;
         days : float;
-        #convert seconds to minutes 
-        minutes = seconds / 60;    
-        #convert minutes to hours    
-        hours = minutes / 60;
-        #convert hours to days  
-        days = round(hours / 24,2);
-        return str(days);
-
+        seconds_string = request.args.get('seconds');
+        if (seconds is not None):
+            #convert seconds to minutes 
+            minutes = seconds / 60;    
+            #convert minutes to hours    
+            hours = minutes / 60;
+            #convert hours to days  
+            days = round(hours / 24,2);
+            return str(days);
+        elif ( seconds_string is not None ):
+            seconds = float(seconds_string);
+            #convert minutes to hours   
+            minutes = seconds / 60;    
+            #convert minutes to hours    
+            hours = minutes / 60;
+            #convert hours to days  
+            days = round(hours / 24,2);
+            return str(days);
+        else : 
+            return None;
     except Exception as e:
         print(e)
         return "Invalid data in query string", 400
@@ -66,15 +95,30 @@ def secondsToYears(seconds : int = None):
         hours : float;
         days : float;
         years : float;
-        #convert seconds to minutes 
-        minutes = seconds / 60;    
-        #convert minutes to hours    
-        hours = minutes / 60;
-        #convert hours to days  
-        days = hours / 24;
-        #convert days to years
-        years = round(days / 365,2);
-        return str(years);
+        seconds_string = request.args.get('seconds');
+        if (seconds is not None):
+            #convert seconds to minutes 
+            minutes = seconds / 60;    
+            #convert minutes to hours    
+            hours = minutes / 60;
+            #convert hours to days  
+            days = hours / 24;
+            #convert days to years
+            years = round(days / 365,2);
+            return str(years);
+        elif ( seconds_string is not None ):
+            seconds = float(seconds_string);
+            #convert minutes to hours   
+            minutes = seconds / 60;    
+            #convert minutes to hours    
+            hours = minutes / 60;
+            #convert hours to days  
+            days = hours / 24;
+            #convert days to years
+            years = round(days / 365,2);
+            return str(years);
+        else : 
+            return None;
 
     except Exception as e:
         print(e)
@@ -86,8 +130,17 @@ def secondsToYears(seconds : int = None):
 def minutesToSeconds(minutes : float = None): 
     try:
         seconds : float;
-        seconds = minutes * 60;
-        return str(seconds);
+        minutes_string = request.args.get('minutes');
+        if (minutes is not None):
+            seconds = minutes * 60;
+            return str(seconds);
+        elif ( minutes_string is not None ):
+            minutes = float(minutes_string);
+            seconds = minutes * 60;
+            return str(seconds);
+        else:
+            return None;
+
 
     except Exception as e:
         print(e)

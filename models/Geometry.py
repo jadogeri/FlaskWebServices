@@ -42,9 +42,9 @@ def getAreaCircle( radius : float = None):
         if (radius is not None):
             area = round(Math.pi,2) * radius**2;  
             return str(area);       
-        elif ( radius_string is None):
-            area = 0.5 * round(Math.pi,2) * radius**2;   
-            return str(area)        
+        # elif ( radius_string is None):
+        #     area = round(Math.pi,2) * radius**2;   
+        #     return str(area)        
         elif ( radius_string is not None ):
             radius = float(radius_string);
             area = round(Math.pi,2) * radius**2;  
@@ -64,9 +64,9 @@ def getAreaTriangle( base : float = None, height : float = None):
         if ( base is not None and height is not None):
             area = 0.5 * base * height;  
             return str(area);       
-        elif (  base_string is None and height_string is None):
-            area = 0.5 * base * height;    
-            return str(area)        
+        # elif (  base_string is None and height_string is None):
+        #     area = 0.5 * base * height;    
+        #     return str(area)        
         elif ( base_string is not None and height_string is not None ):
             base = float(base_string);
             height = float(height_string);
@@ -87,9 +87,9 @@ def getPerimeterRectangle( width : float = None, length : float = None):
         if (width is not None and length is not None):
             perimeter = 2 * ( width + length ); 
             return str(perimeter);       
-        elif ( width_string is None and length_string is None):
-            perimeter = 2 * ( width + length ); 
-            return str(perimeter)        
+        # elif ( width_string is None and length_string is None):
+        #     perimeter = 2 * ( width + length ); 
+        #     return str(perimeter)        
         elif ( width_string is not None and length_string is not None ):
             width = float(width_string);
             length = float(length_string);
@@ -110,9 +110,9 @@ def getPerimeterCircle( radius : float = None):
         if (radius is not None):
             perimeter = 2 * round(Math.pi,2) * radius; 
             return str(perimeter);       
-        elif ( radius_string is None):
-            perimeter = 2 * round(Math.pi,2) * radius;   
-            return str(perimeter)        
+        # elif ( radius_string is None):
+        #     perimeter = 2 * round(Math.pi,2) * radius;   
+        #     return str(perimeter)        
         elif ( radius_string is not None ):
             radius = float(radius_string);
             perimeter = 2 * round(Math.pi,2) * radius;  
@@ -136,9 +136,9 @@ def getPerimeterTriangle( side1 : float = None, side2 : float = None, side3 : fl
         if (side1 is not None and side2 is not None and side3 is not None):
             perimeter = side1 + side2 + side3;  
             return str(perimeter);       
-        elif (side1_string is None and side2_string is None and side3_string is None):
-            perimeter = side1 + side2 + side3;  
-            return str(perimeter);        
+        # elif (side1_string is None and side2_string is None and side3_string is None):
+        #     perimeter = side1 + side2 + side3;  
+        #     return str(perimeter);        
         elif (side1_string is not None and side2_string is not None and side3_string is not None):
             side1 = float(side1_string);
             side2 = float(side2_string);
