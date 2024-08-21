@@ -7,6 +7,8 @@
 from app import *
 from models.Time import *
 from models.Geometry import *
+from models.Temperature import *
+from models.Cooking import *
 
 @app.route('/')
 def server():
